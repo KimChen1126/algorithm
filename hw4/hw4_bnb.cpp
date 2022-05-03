@@ -13,7 +13,7 @@ auto bruteforce()
     vector<pair<float,pair<float,float>>>item;
     float capacity;
     cin>>n>>capacity;
-    auto start = high_resolution_clock::now();
+    
     for(auto i=0;i<n;i++)
     {
      
@@ -24,7 +24,7 @@ auto bruteforce()
         tmpp.first=cost;
         item.push_back(tmpp);
     }
-    
+    auto start = high_resolution_clock::now();
     // cout<<"test"<<endl;
     // for(auto j=0;j<n;j++)
     // {
