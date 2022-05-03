@@ -2,7 +2,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 using namespace std::chrono;
-
+int n;
 bool sortbyfir(const pair<float,pair<float,float>> &a,
                    const pair<float,pair<float,float>> &b)
 {
@@ -10,11 +10,10 @@ bool sortbyfir(const pair<float,pair<float,float>> &a,
 }
 auto bruteforce()
 {
-
     vector<pair<float,pair<float,float>>>item;
-    int n;
     float capacity;
     cin>>n>>capacity;
+    auto start = high_resolution_clock::now();
     for(auto i=0;i<n;i++)
     {
      
@@ -25,19 +24,20 @@ auto bruteforce()
         tmpp.first=cost;
         item.push_back(tmpp);
     }
-    cout<<"test"<<endl;
-    for(auto j=0;j<n;j++)
-    {
-        cout<<fixed<<setprecision(3);
-        cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
-    }
+    
+    // cout<<"test"<<endl;
+    // for(auto j=0;j<n;j++)
+    // {
+    //     cout<<fixed<<setprecision(3);
+    //     cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
+    // }
     sort(item.begin(),item.end(),sortbyfir);
-    cout<<"after sorting:"<<endl;
-    for(auto j=0;j<n;j++)
-    {
-        cout<<fixed<<setprecision(3);
-        cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
-    }
+    // cout<<"after sorting:"<<endl;
+    // for(auto j=0;j<n;j++)
+    // {
+    //     cout<<fixed<<setprecision(3);
+    //     cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
+    // }
     float ans=0;
     for(auto &k:item)
     {
@@ -50,6 +50,14 @@ auto bruteforce()
     }
 
     cout<<"ans="<<ans<<endl;
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "Time taken by function: "
+         << float(duration.count()) /1000000<< " seconds" << endl;
+    ofstream out;
+    out.open("./result.txt",ios::app);
+    out<<n<<" "<<float(duration.count()) /1000000<<endl;
+    return 0;
 }
 /*
 P W
@@ -71,14 +79,8 @@ please implement you code here, gg:)
 */
 }
 int main()
-{
-
-    auto start = high_resolution_clock::now();
+{  
     bruteforce();
-    // branchandbound();
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << "Time taken by function: "
-         << duration.count() << " microseconds" << endl;
+    // branchandbound();   
     return 0;
 }
