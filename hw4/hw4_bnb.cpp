@@ -2,10 +2,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 using namespace std::chrono;
-// bool compare(const pair<pair<float,float>,float>&i, const pair<pair<float,float>,float>&j) 
-// { 
-//     return i.second < j.second; 
-// } 
+
 bool sortbyfir(const pair<float,pair<float,float>> &a,
                    const pair<float,pair<float,float>> &b)
 {
@@ -20,9 +17,8 @@ auto bruteforce()
     cin>>n>>capacity;
     for(auto i=0;i<n;i++)
     {
-        // int price,capa;
+     
         float cost;
-        // pair<float,float>tmp;
         pair<float,pair<float,float>>tmpp;
         cin>>tmpp.second.first>>tmpp.second.second;
         cost=(tmpp.second.first/tmpp.second.second);
