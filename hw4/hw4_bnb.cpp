@@ -112,13 +112,55 @@ P W
 85 65
 87 46
 */
-auto bruteforce(){
-/*
- you code here, gg:)
-*/
+auto bruteforce()
+{
+    int n, M;
+    int P[105];
+    int W[105];
+    int C[105] = {0};
+    scanf("%d %d", &n, &M);
+    for(int i = 1; i <= n; i++)
+        scanf("%d %d", &P[i], &W[i]);
+    auto start = high_resolution_clock::now();
 
+    int temp_p, temp_w, ptr, ans = 0;
+    for(int i = 1; i <= pow(2, n); i++){
+        ptr = n;
+        temp_p = 0;
+        temp_w = 0;
+        while((C[ptr] != 0) && ptr > 0){
+            C[ptr] = 0;
+            ptr--;
+        }
+        C[ptr] = 1;
+        for(int j = 1; j <= n; j++)
+            if(C[j] == 1){
+                temp_p += P[j];
+                temp_w += W[j];
+            }
+        
+        /*for(int j = 1; j <= n; j++)
+            printf("%d", C[j]);
+        printf(": ");
+        printf("%d %d\n", temp_p, temp_w);*/
+        
+        if((temp_p > ans) && (temp_w <= M))
+            ans = temp_p;
+    }
+    printf("%d\n", ans);
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "Time taken by function: "
+            << float(duration.count()) /1000000<< " seconds" << endl;
+    ofstream out;
+    out.open("./result2.txt",ios::app);
+    out<<n<<" "<<float(duration.count()) /1000000<<endl;
+    return 0;
+
+}
 /* time function
-auto stop = high_resolution_clock::now();
+    auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "Time taken by function: "
          << float(duration.count()) /1000000<< " seconds" << endl;
@@ -127,10 +169,10 @@ auto stop = high_resolution_clock::now();
     out<<n<<" "<<float(duration.count()) /1000000<<endl;
     return 0;
 */
-}
+
 int main()
 {  
-    //bruteforce();
-    branchandbound();   
+    bruteforce();
+    // branchandbound();   
     return 0;
 }
