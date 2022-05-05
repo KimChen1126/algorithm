@@ -172,7 +172,7 @@ auto bruteforce()
 
 int main()
 {  
-    bruteforce();
-    // branchandbound();   
+    // bruteforce();
+    branchandbound();   
     return 0;
 }
