@@ -31,6 +31,14 @@ int bound(Node u, int n,float capacity,vector<pair<float,pair<float,float>>>&ite
     }
     return probound;
 }
+auto showarray(vector<pair<float,pair<float,float>>>&item)
+{
+    for(auto j=0;j<n;j++)
+    {
+        cout<<fixed<<setprecision(3);
+        cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
+    } 
+}
 auto branchandbound()
 {
     vector<pair<float,pair<float,float>>>item;//item cost value, weight 
@@ -49,18 +57,10 @@ auto branchandbound()
     }
     auto start = high_resolution_clock::now();
     // cout<<"test"<<endl;
-    // for(auto j=0;j<n;j++)
-    // {
-    //     cout<<fixed<<setprecision(3);
-    //     cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
-    // }
+    //showarray(item);
     sort(item.begin(),item.end(),sortbyfir);
     // cout<<"after sorting:"<<endl;
-    // for(auto j=0;j<n;j++)
-    // {
-    //     cout<<fixed<<setprecision(3);
-    //     cout<<"cost="<<item[j].first<<" price="<<item[j].second.first<<" weight="<<item[j].second.second<<endl;
-    // }
+    //showarray(item);
     queue<Node>Q;
     Node u,v;
     u.lv=-1;
@@ -115,9 +115,9 @@ P W
 auto bruteforce()
 {
     int n, M;
-    int P[105];
-    int W[105];
-    int C[105] = {0};
+    int P[50];
+    int W[50];
+    int C[50] = {0};
     scanf("%d %d", &n, &M);
     for(int i = 1; i <= n; i++)
         scanf("%d %d", &P[i], &W[i]);
