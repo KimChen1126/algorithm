@@ -7,6 +7,8 @@ ans=[]
 brute=[]
 n=[5,10,15,20,25,30,35,40]
 os.chdir('D:/algorithm/hw4')
+print(os.environ['USERPROFILE'])
+
 with open("./result.txt",'r')as f:
     tmpp=0
     lines=f.readlines()

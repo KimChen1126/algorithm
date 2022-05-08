@@ -125,6 +125,7 @@ auto bruteforce()
 
     int temp_p, temp_w, ptr, ans = 0;
     for(int i = 1; i <= pow(2, n); i++){
+        cout<<"calculating:"<<i<<endl;
         ptr = n;
         temp_p = 0;
         temp_w = 0;
@@ -172,7 +173,7 @@ auto bruteforce()
 
 int main()
 {  
-    // bruteforce();
-    branchandbound();   
+    bruteforce();
+    // branchandbound();   
     return 0;
 }
